@@ -1,0 +1,91 @@
+general {
+	colors = true
+	color_good = "#006600"
+	color_bad = "#990000"
+	color_degraded = "#b58900"
+	interval = 2
+}
+
+order += "volume master"
+order += "load"
+order += "cpu_usage"
+order += "disk /"
+order += "battery 0"
+order += "wireless wlp58s0"
+#order += "run_watch VPNC"
+order += "path_exists VPN"
+order += "tztime local"
+
+volume master {
+	format = " ♪ %volume  "
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+load {
+	format = " Load Δ %1min "
+}
+
+cpu_usage {
+	format = " CPU %usage "
+}
+
+cpu_temperature 0 {
+	format = " ± %degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp2_input"
+	max_threshold = 95
+}
+
+cpu_temperature 1 {
+	format = "%degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp3_input"
+	max_threshold = 95
+}
+
+cpu_temperature 2 {
+	format = "%degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp4_input"
+	max_threshold = 95
+}
+
+cpu_temperature 3 {
+	format = "%degrees° "
+	path = "/sys/devices/platform/coretemp.0/temp5_input"
+	max_threshold = 95
+}
+
+disk "/" {
+	format = "%avail"
+}
+
+wireless wlp58s0 {
+	format_up = " W: (%quality at %essid) %ip "
+	format_down = " ☡ WiFi "
+}
+
+tztime local {
+	format = " %d-%h-%Y %H:%M:%S"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+
+run_watch VPNC {
+        # file containing the PID of a vpnc process
+        pidfile = "/var/run/vpnc/pid"
+}
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/sys/class/net/ppp0/dev_id"
+}
