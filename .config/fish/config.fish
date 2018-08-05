@@ -10,7 +10,7 @@ fundle plugin 'tuvistavie/fish-ssh-agent'
 
 fundle init
 
-set -g theme_color_scheme base16
+set -g theme_color_scheme terminal-dark-white
 set -g theme_display_k8s_context yes
 set -g theme_display_date yes
 

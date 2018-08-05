@@ -4,6 +4,7 @@ angular-cli
 atom
 base-devel
 chromium
+xfce4-clipman-plugin
 dmenu
 dunst
 emacs
@@ -41,6 +42,8 @@ networkmanager-l2tp
 networkmanager-openvpn
 nodejs
 npm
+numlockx
+ncdu
 openssh
 openvpn
 p7zip

@@ -11,6 +11,7 @@ order += "load"
 order += "cpu_usage"
 order += "disk /"
 order += "battery 0"
+order += "ethernet enp0s20f0u2"
 order += "wireless wlp58s0"
 #order += "run_watch VPNC"
 order += "path_exists VPN"
@@ -57,6 +58,12 @@ cpu_temperature 3 {
 
 disk "/" {
 	format = "%avail"
+}
+
+
+ethernet enp0s20f0u2 {
+	format_up =  " Ω: %ip  "
+	format_down = " ∅ enp0s20f0u2  "
 }
 
 wireless wlp58s0 {
