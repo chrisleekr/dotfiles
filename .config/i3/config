@@ -164,20 +164,21 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    tray_output eDP1
+    status_command i3status
 }
 
 # start ibus language tool 
-exec --no-startup-id ibus-daemon -drx
+exec_always --no-startup-id ibus-daemon -drx
 
 # start network manager 
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet
 
 # start dunst - notification manager
-exec --no-startup-id dunst -config ~/.config/dunst/dustrc
+exec_always --no-startup-id dunst -config ~/.config/dunst/dustrc
 
 # i3lock-fancy setup
-exec --no-startup-id xautolock -time 5 -locker "i3lock-fancy"
+exec_always --no-startup-id xautolock -time 5 -locker "i3lock-fancy"
 bindsym $mod+Delete exec "i3lock-fancy"
 bindsym $mod+Control+Delete exec "i3lock-fancy && systemctl suspend"
 
@@ -187,28 +188,22 @@ set $rofi "rofi -combi-modi window,drun,run -show combi -modi combi -font 'Sourc
 bindsym $mod+d exec $rofi
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec gnome-terminal --hide-menubar
 
 # screenshot setup
-#bindsym Print exec gnome-screenshot -i
-bindsym Print exec deepin-screenshot -n
+bindsym Print exec gnome-screenshot -i
+#bindsym Print exec deepin-screenshot -n
 
 # start goldendict
-exec --no-startup-id goldendict
-
-# set workspaces
-mode "init" {
-     bindsym $mod+1 mode "default"; exec --no-startup-id ~/.config/i3/load_layout.sh
-}
-bindsym $mod+Shift+i mode "init"
+exec_always --no-startup-id goldendict
 
 # focus setting
 no_focus [window_role="pop-up"]
 focus_follows_mouse no
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 
 # setup ssh agent
-exec --no-startup-id ssh-agent -a "/home/chrislee/.ssh/ssh_agent/socket" > /home/chrislee/.ssh/ssh_agent/agent
+exec_always --no-startup-id ssh-agent -a "/home/chrislee/.ssh/ssh_agent/socket" > /home/chrislee/.ssh/ssh_agent/agent
 
 # make floating
 for_window [title="Calculator"] floating enable
@@ -223,8 +218,13 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # start setup monitors
-exec --no-startup-id ~/.config/i3/load_monitors.sh
 bindsym $mod+x move workspace to output left
 
 # set default workspace layout
 workspace_layout tabbed
+
+# enable numlock
+exec_always --no-startup-id numlockx on
+
+# run clipman
+exec_always --no-startup-id xfce4-clipman
