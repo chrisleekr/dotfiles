@@ -164,7 +164,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    tray_output eDP1
+    tray_output DP-1
     status_command i3status
 }
 
@@ -191,7 +191,8 @@ bindsym $mod+d exec $rofi
 bindsym $mod+Return exec gnome-terminal --hide-menubar
 
 # screenshot setup
-bindsym Print exec gnome-screenshot -i
+bindsym Print exec shutter
+#bindsym Print exec gnome-screenshot -i
 #bindsym Print exec deepin-screenshot -n
 
 # start goldendict
@@ -228,3 +229,6 @@ exec_always --no-startup-id numlockx on
 
 # run clipman
 exec_always --no-startup-id xfce4-clipman
+
+# run x2godesktopsharing
+exec_always --no-startup-id x2godesktopsharing

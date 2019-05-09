@@ -4,8 +4,6 @@ set -x LANG en_AU
 set -x LANGUAGE en_AU.UTF-8
 export LC_ALL="en_AU.UTF-8" 
 
-set -gx PATH /home/chrislee/.pear/bin /home/chrislee/.local/bin $PATH
-
 fundle plugin 'tuvistavie/fish-ssh-agent'
 
 fundle init

@@ -10,8 +10,8 @@ order += "volume master"
 order += "load"
 order += "cpu_usage"
 order += "disk /"
-order += "battery 0"
-order += "ethernet enp0s20f0u2"
+#order += "battery 0"
+order += "ethernet eno1"
 order += "wireless wlp58s0"
 #order += "run_watch VPNC"
 order += "path_exists VPN"
@@ -61,9 +61,9 @@ disk "/" {
 }
 
 
-ethernet enp0s20f0u2 {
+ethernet eno1 {
 	format_up =  " Ω: %ip  "
-	format_down = " ∅ enp0s20f0u2  "
+	format_down = " ∅ eno1  "
 }
 
 wireless wlp58s0 {
